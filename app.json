@@ -3,6 +3,7 @@
     "name": "emploi-du-temps-etudiant",
     "slug": "emploi-du-temps-etudiant",
     "version": "1.0.0",
+    "owner": "redemption",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
