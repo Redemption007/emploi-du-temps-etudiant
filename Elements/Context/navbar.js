@@ -1,43 +1,49 @@
 import * as React from 'react';
-import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableHighlight, View } from "react-native";
 
 const NavBar = ({ navigation }) => {
-    const onPress = whereTo => {navigation.navigate(whereTo)}
-    const Bouton = (params) => {
+    const Bouton = (p) => {
         return (
-            <TouchableHighlight onPress={onPress(params.whereTo)}>
+            <TouchableHighlight onPress={() => navigation.navigate(p.whereTo)} style={styles.bouton}>
             <View>
-                <Image style={styles.icon} source={params.path}/>
+                <Image style={styles.icon} source={p.path}/>
             </View>
             </TouchableHighlight>
         );
-    }          
+    }
 
     return (
         <View style={styles.navbar}>
-            <Bouton whereTo={'Accueil'} path={require('../Icons/home.png')}/>
             <Bouton whereTo={'Agenda'} path={require('../Icons/task.png')}/>
+            <Bouton whereTo={'Accueil'} path={require('../Icons/home.png')}/>
             <Bouton whereTo={'Planning'} path={require('../Icons/planning.png')}/>
-      </View>
+        </View>
     );
 }
 const styles = StyleSheet.create({
+    bouton: {
+        width: "33.333%",
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
     icon: {
-        margin: 15,
-        width: 70,
-        height: 60,
+        width: 40,
+        height: 40,
         resizeMode: 'stretch'
     },
     navbar: {
-        height: 80,
+        height: "10%",
         width: '100%',
         display: "flex",
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
         position: "absolute",
         bottom: 0,
         backgroundColor: "#000",
-        flexDirection: 'row',
     },
   });
   
 
-module.exports = NavBar
+export default NavBar

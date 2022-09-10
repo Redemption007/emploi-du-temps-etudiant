@@ -3,7 +3,7 @@ import NavBar from '../Context/navbar.js'
 import Menu from "../Context/menu.js"
 import { StyleSheet, Text, View } from 'react-native';
 
-const Planning = ({ navigation }) => {
+const Settings = ({ navigation }) => {
   const content = () => {
     return (
         <Text>Bonsoir :)</Text>
@@ -13,7 +13,7 @@ const Planning = ({ navigation }) => {
   return (
     <View style={styles.sheet}>
         <Menu 
-        Screen={'Emploi du Temps'}
+        Screen={'Paramètres'}
         content={content}
         nav ={navigation}/>
         <NavBar navigation={navigation}/>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Planning
+export default Settings
