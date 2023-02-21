@@ -1,4 +1,24 @@
 import * as React from 'react';
+import { Text } from 'react-native';
+
+const Accueil = ({ navigation }) => {
+    const content = () => {
+      return (
+          <Text>Accueil ={'>'} Résumé</Text>
+      )
+    }
+  
+    return (
+        content()
+      );
+    };
+  
+export default Accueil
+
+
+
+
+/*import * as React from 'react';
 import NavBar from '../Context/navbar.js'
 import Menu from "../Context/menu.js"
 import { StyleSheet, Text, View } from 'react-native';
@@ -39,3 +59,4 @@ const styles = StyleSheet.create({
 })
 
 export default Accueil
+*/

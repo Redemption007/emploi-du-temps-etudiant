@@ -1,4 +1,22 @@
 import * as React from 'react';
+import { Text, View, SafeAreaView, FlatList } from 'react-native';
+
+const Agenda = ({ navigation }) => {
+    const content = () => {
+      return(
+        <Text>Agenda</Text>
+      )
+    }
+  
+    return (
+        content()
+      );
+    };
+  
+export default Agenda
+
+/*
+import * as React from 'react';
 import NavBar from '../Context/navbar.js'
 import Menu from "../Context/menu.js"
 import { StyleSheet, Text, View } from 'react-native';
@@ -38,3 +56,4 @@ const styles = StyleSheet.create({
   }
 })
 export default Agenda
+*/
