@@ -1,60 +1,27 @@
 import * as React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { StyleSheet } from 'react-native';
+import './Elements/Database/global'
 
-import Accueil from './Elements/Pages/accueil.js'
-import Agenda from './Elements/Pages/agenda.js'
-import Planning from './Elements/Pages/planning.js'
-import About from './Elements/Pages/about.js'
-import Settings from './Elements/Pages/settings.js'
+import Tabber from './Elements/Pages/tabber'
+import Settings from './Elements/Pages/settings'
+import Calendars from './Elements/Pages/calendars'
+import About from './Elements/Pages/about'
 
-const Stack = createNativeStackNavigator();
-
-const options = () => ({
-  header: () => {}
-})
+const Drawer = createDrawerNavigator();
+// global.database.clean_All()
 
 export default function App() {
 
+  
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Accueil"
-          component={Accueil}
-          options={options}
-        />
-        <Stack.Screen
-          name="Agenda"
-          component={Agenda}
-          options={options}
-        />
-        <Stack.Screen
-          name="Planning"
-          component={Planning}
-          options={options}
-        />
-        <Stack.Screen
-          name="Settings"
-          component={Settings}
-          options={options}
-        />
-        <Stack.Screen
-          name="About"
-          component={About}
-          options={options}
-        />
-      </Stack.Navigator>
+      <Drawer.Navigator useLegacyImplementation initialRouteName="Accueil">
+        <Drawer.Screen name="Accueil" component={Tabber} />
+        <Drawer.Screen name="Paramètres" component={Settings} />
+        <Drawer.Screen name="Calendriers" component={Calendars} />
+        <Drawer.Screen name="À propos" component={About} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
