@@ -26,7 +26,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.redemption.emploidutempsetudiant"
+      "package": "com.redemption.emploidutempsetudiant",
+      "versionCode": "v1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
