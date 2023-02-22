@@ -1,10 +1,20 @@
 import * as React from 'react';
-import { Text } from 'react-native';
+import { FlatList, Text, SafeAreaView, StyleSheet, View } from 'react-native';
+import Param from '../Components/param'
 
 const Settings = ({ navigation }) => {
     const content = () => {
+      const settings = global.database.get('settings')[0]
+      const settings_entries = Object.entries(settings)
       return (
-          <Text>Settings</Text>
+          <View style={{flex:1}}>
+            <SafeAreaView>
+              <FlatList data={settings_entries} renderItem={({item}) => {
+              return(
+              <Param setting={item}/>
+              )}}/>
+            </SafeAreaView>
+          </View>
       )
     }
   
@@ -14,6 +24,8 @@ const Settings = ({ navigation }) => {
     };
   
 export default Settings
+
+
 
 
 /*

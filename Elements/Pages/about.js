@@ -1,18 +1,30 @@
 import * as React from 'react';
-import { Linking, Text } from 'react-native';
+import { Linking, View, Text } from 'react-native';
 
 const About = ({ navigation }) => {
     const content = () => {
       return (
-        <Text>Cette application a été développée par un étudiant, pour des étudiants.{"\n"}
-        Pour la moindre remarque, n'hésitez pas à me joindre à  
-        <Text onPress={() => Linking.openURL('mailto:b.a.p.t.s.t.e7@gmail.com')}> b.a.p.t.s.t.e7@gmail.com</Text>
-        ou bien à poster un commentaire sur le PlayStore.{"\n"}
-        La licence de l'AppStore coûtant horriblement cher, (99$ USD annuel) une version compatible iOS n'est pas prévue.{"\n"}{"\n"}
-        Pour obtenir votre emploi du temps sur cette application, récupérez le lien ICS de l'emploi du temps et
-        appuyez sur '+' dans la page <Text>Calendriers</Text>.{"\n"}{"\n"}
-        Dernière version mise en production le : 11/09/2022.
-    </Text>
+        <View style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: 60,
+          backgroundColor: '#dddddd',
+          /*
+          */
+          }}>
+          <Text>
+          Cette application a été développée par un étudiant, pour des étudiants.{"\n"}
+          Pour la moindre remarque, n'hésitez pas à me joindre à  
+          <Text onPress={() => Linking.openURL('mailto:b.a.p.t.s.t.e7@gmail.com')}> b.a.p.t.s.t.e7@gmail.com </Text>
+          ou bien à poster un commentaire sur le PlayStore.{"\n\n\n\n"}
+          La licence de l'AppStore coûtant horriblement cher, (99$ USD annuel) une version compatible iOS n'est pas prévue.{"\n\n\n\n\n"}
+          Pour obtenir votre emploi du temps sur cette application, récupérez le lien ICS de l'emploi du temps et
+          appuyez sur '+' dans la page <Text onPress={() => navigation.navigate('Calendriers')}>Calendriers</Text>.{"\n\n\n\n\n\n\n\n"}
+          Dernière version mise en production le : 21/02/2023.
+          </Text>
+        </View>
       )
     }
   
