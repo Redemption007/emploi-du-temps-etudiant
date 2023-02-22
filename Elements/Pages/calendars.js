@@ -17,6 +17,8 @@ const Calendars = ({ navigation }) => {
     Groupe.get(item).then(async array_group => {
         const group = array_group[0]
         await Groupe.update_visibility(group)
+      }).catch(() => {
+        global.alert_error()
       })
     setTimeout(() => {
       setableSave(!disableSave)
@@ -29,11 +31,13 @@ const Calendars = ({ navigation }) => {
     Groupe.get(item).then(async array_group => {
         const group = array_group[0]
         await Groupe.remove(group)
-      })
-      setTimeout(() => {
-        setableSave(!disableSave)
-        setableSave(!disableSave)
-      }, 500)
+    }).catch(() => {
+      global.alert_error()
+    })
+    setTimeout(() => {
+      setableSave(!disableSave)
+      setableSave(!disableSave)
+    }, 500)
   }
 
   const change_text = (text, prop) => {
@@ -48,7 +52,7 @@ const Calendars = ({ navigation }) => {
     }
     if (inputGroupUrl && inputNameGroup) {
       setableSave(false)
-    } else {
+    } else if (!disableSave) {
       setableSave(true)
     }
   }
@@ -58,7 +62,9 @@ const Calendars = ({ navigation }) => {
 Nom du nouveau groupe : ${inputNameGroup}
 Url du nouveau groupe : ${inputGroupUrl}
     `);
-    await Groupe.create({name: inputNameGroup, url: inputGroupUrl, visible: true})
+    await Groupe.create({name: inputNameGroup, url: inputGroupUrl, visible: true}).catch(() => {
+      global.alert_error()
+    })
     setModalVisible(!modalVisible)
     setableSave(!disableSave)
     console.log('Saved !');
@@ -79,7 +85,9 @@ Url du nouveau groupe : ${inputGroupUrl}
       )
     } else {
       return (
-        <Text style={{flex:1}}>Pas de groupe enregistré. Appuyez sur + pour enregistrer un groupe.</Text>
+        <View style={styles.noGroupView}>
+          <Text style={styles.noGroupText}>Pas d'agenda enregistré. Munissez-vous d'une lien de calendrier (ics) et appuyez sur le bouton + pour enregistrer un groupe.</Text>
+        </View>
       )
     }
     
@@ -160,6 +168,19 @@ const screen_width = Dimensions.get('window').width
 const round_dim = (screen_width*0.2)
 
 const styles = StyleSheet.create({
+  noGroupView: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noGroupText: {
+    color: 'black',
+    fontSize: 24,
+    textAlign: 'center',
+    paddingBottom: '10%',
+    paddingHorizontal: '5%'
+  },
   inputText: {
     borderColor: '#000000',
     borderWidth: 0.5,
@@ -194,6 +215,10 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   roundbutton: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
     position: 'absolute',
     top: 0.8*screen_height,
     elevation: 2,
@@ -225,9 +250,8 @@ const styles = StyleSheet.create({
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center',
-    alignItems: 'center',
-    fontSize: 70
+    fontSize: 80,
+    marginTop: -0.1*round_dim
   },
   textCancelStyle: {
     color: 'black',

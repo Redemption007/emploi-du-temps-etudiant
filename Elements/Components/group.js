@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Image, Text, View, Pressable, StyleSheet, Modal } from "react-native"
 
-const Group_item = ({item, update, suppr}) => {
+export default Group_item = ({item, update, suppr}) => {
 
     console.log(`Group item updated : ${item.name} est ${item.visible?'':'in'}visible`);
 
@@ -133,5 +133,3 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
   });
-
-export default Group_item
